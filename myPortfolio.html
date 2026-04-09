@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adarsh Sharma | Full Stack Developer</title>
+  <link rel="stylesheet" href="myPortfolio.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Adarsh</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle">🌙</button>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Hi, I'm <span>Adarsh Sharma</span></h2>
+    <h3><span id="typing"></span></h3>
+    <p>I build modern, scalable and user-friendly web applications.</p>
+    <a href="#contact" class="btn">Hire Me</a>
+    <a href="resume.pdf" download class="btn outline">Download CV</a>
+  </section>
+
+  <section id="about" class="fade">
+    <h2>About Me</h2>
+    <p>Full Stack Developer skilled in Java, Python, React & Node.js. Passionate about building scalable systems and clean UI.</p>
+  </section>
+
+  <section id="skills" class="fade">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card skill">Java</div>
+      <div class="card skill">Python</div>
+      <div class="card skill">JavaScript</div>
+      <div class="card skill">React</div>
+      <div class="card skill">Node.js</div>
+      <div class="card skill">HTML</div>
+      <div class="card skill">CSS</div>
+    </div>
+  </section>
+
+  <section id="projects" class="fade">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Music Player</h3>
+        <p>Responsive music player with playlist and controls.</p>
+        <a href="#" class="btn small outline">GitHub</a>
+      </div>
+      <div class="card">
+        <h3>Netflix Data Visualization</h3>
+        <p>Data analysis using Python & charts.</p>
+        <a href="#" class="btn small outline">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="fade">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:adarshsharma5976@gmail.com">adarshsharma5976@gmail.com</a></p>
+    <p>Phone: 9621176221</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Adarsh Sharma | Full Stack Developer</p>
+  </footer>
+
+  <script>
+    const text = "Full Stack Developer";
+    let i = 0;
+    function typing(){
+      if(i < text.length){
+        document.getElementById("typing").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, 100);
+      }
+    }
+    typing();
+
+    document.querySelectorAll('a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if(this.getAttribute('href').startsWith('#')){
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.getElementById("themeToggle").onclick = () => {
+      document.body.classList.toggle("light");
+    }
+
+    const faders = document.querySelectorAll('.fade');
+    window.addEventListener('scroll', () => {
+      faders.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+          el.classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
